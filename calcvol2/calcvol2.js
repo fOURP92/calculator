@@ -121,6 +121,7 @@ function clear(){
 let squareRoot = number => {
     var squareRoot = Math.sqrt(number);
     screen.value = parseFloat(squareRoot.toFixed(3));
+    finalResult = parseFloat(squareRoot.toFixed(3));
 }
 
 function continuousOperations(){
@@ -167,8 +168,8 @@ function equals(a,b){
         finalResult = a - b;
         
     }else if(operation==3){
-        screen.value = a * b;
-        finalResult = a * b;
+        screen.value = parseFloat((a*b).toFixed(3));
+        finalResult = parseFloat((a*b).toFixed(3));
         
     }else if(operation==4){
         screen.value = parseFloat((a/b).toFixed(3)); //show 3 decimals if they are not 0
