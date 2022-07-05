@@ -48,12 +48,19 @@ function getNumber(list){
     screen.value = userNumPressed;
 }
 
-//create screen
+//create screens
 let screen = document.createElement('input');
 screen.value = 0;
 screen.id = 'screen';
 screen.readOnly = true;
 document.getElementsByClassName('grid-container')[0].appendChild(screen);
+
+
+let screenHistory = document.createElement('input');
+screenHistory.id = 'screenHistory';
+screenHistory.readOnly = true;
+document.getElementsByClassName('grid-container')[0].appendChild(screenHistory);
+
 
 //- + * / = C
 
@@ -100,21 +107,37 @@ for(i=0; i < 8; i++){
     if (i==6){
         operatorbutton.innerHTML = '√';
         operatorbutton.addEventListener('click',function(){
-            squareRoot(userNumPressed);
+            squareRoot(screen.value);
         })
     }
     if (i==7){
         operatorbutton.innerHTML = '.';
-        //ADD FUNCTION OF .
+        operatorbutton.addEventListener('click',function(){
+            dot();
+        })
     }
     document.getElementsByClassName('grid-container')[0].appendChild(operatorbutton);
 }
+
+
+function dot(){
+    userNumPressed = userNumPressed.toString();
+    if(userNumPressed.includes('.')){
+        return;
+    }
+    userNumPressed = Number(userNumPressed);
+    userNumPressed += '.';
+    screen.value = userNumPressed;
+    
+}
+
 
 function clear(){
     screen.value = 0;
     result = 0;
     userNumPressed = 0;
     finalResult = undefined;
+    screenHistory.value = '';
 }
 
 //throw some arrow functions
@@ -134,24 +157,28 @@ function continuousOperations(){
 
 function addition(){
     continuousOperations();
+    screenHistory.value = screen.value + '+';
     screen.value = '';
     userNumPressed = '';
     operation = 1;
 }
 function subtraction(){
     continuousOperations();
+    screenHistory.value = screen.value + '-';
     screen.value = '';
     userNumPressed = '';
     operation = 2;
 }
 function multiply(){
     continuousOperations(); 
+    screenHistory.value = screen.value + '*';
     screen.value = '';
     userNumPressed = '';
     operation = 3;
 }
 function division(){
     continuousOperations();
+    screenHistory.value = screen.value + '÷';
     screen.value = '';
     userNumPressed = '';
     operation = 4;
@@ -162,25 +189,29 @@ function equals(a,b){
     if (operation==1){
         screen.value = a + b;
         finalResult = a + b;
+        screenHistory.value = a + '+' + b + '=';
         
     }else if(operation==2){
         screen.value = a - b;
         finalResult = a - b;
+        screenHistory.value = a + '-' + b + '=';
         
     }else if(operation==3){
         screen.value = parseFloat((a*b).toFixed(3));
         finalResult = parseFloat((a*b).toFixed(3));
+        screenHistory.value = a + '*' + b + '=';
         
     }else if(operation==4){
         screen.value = parseFloat((a/b).toFixed(3)); //show 3 decimals if they are not 0
         finalResult = parseFloat((a/b).toFixed(3));
+        screenHistory.value = a + '÷' + b + '=';
         
     }
     
 }
 
 //TODO
-//ADD FUNCTION FOR .
+//fix writing number after operation+
 //TRY CURRENCY API??
 
 
