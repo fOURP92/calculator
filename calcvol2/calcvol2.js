@@ -187,13 +187,13 @@ function division(){
 
 function equals(a,b){
     if (operation==1){
-        screen.value = a + b;
-        finalResult = a + b;
+        screen.value = parseFloat((a+b).toFixed(3));
+        finalResult = parseFloat((a+b).toFixed(3));
         screenHistory.value = a + '+' + b + '=';
         
     }else if(operation==2){
-        screen.value = a - b;
-        finalResult = a - b;
+        screen.value = parseFloat((a-b).toFixed(3));
+        finalResult = parseFloat((a-b).toFixed(3));
         screenHistory.value = a + '-' + b + '=';
         
     }else if(operation==3){
@@ -209,6 +209,8 @@ function equals(a,b){
     }
     
 }
+
+
 
 //TODO
 //fix writing number after operation+
