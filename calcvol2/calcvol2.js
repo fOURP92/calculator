@@ -74,25 +74,25 @@ for(i=0; i < 8; i++){
             equals(result,userNumPressed);
         })
     }
-    if (i == 1){
+    if (i==1){
         operatorbutton.innerHTML = '+';
         operatorbutton.addEventListener('click', function(){
             addition();
         })
     }
-    if (i == 2){
+    if (i==2){
         operatorbutton.innerHTML = '-';
         operatorbutton.addEventListener('click', function(){
             subtraction();
         })
     }
-    if (i == 3){
+    if (i==3){
         operatorbutton.innerHTML = 'x';
         operatorbutton.addEventListener('click', function(){
             multiply();
         })
     }
-    if (i == 4){
+    if (i==4){
         operatorbutton.innerHTML = '÷'
         operatorbutton.addEventListener('click', function(){
             division();
@@ -206,8 +206,7 @@ function equals(a,b){
         finalResult = parseFloat((a/b).toFixed(3));
         screenHistory.value = a + '÷' + b + '=';
         
-    }
-    
+    }   
 }
 
 

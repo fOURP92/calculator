@@ -13,9 +13,17 @@
 
 .buttons{
     font-size: 45px;
-    text-align: center;
-    
+    text-align: center;   
 }
+
+.buttons:hover {
+	background:linear-gradient(to bottom, #bc80ea 5%, #dfbdfa 100%);
+	background-color:#bc80ea;
+}
+
+buttons:active {
+    color: yellow;
+  }
 
 #btn0{
     grid-row: 7;
@@ -96,8 +104,11 @@
     grid-column: 3;
 }
 .operators{
-    font-size: 34px;
-    
+    font-size: 34px; 
+}
+.operators:hover{
+    background:linear-gradient(to bottom, #bc80ea 5%, #dfbdfa 100%);
+	background-color:#bc80ea;
 }
 
 
